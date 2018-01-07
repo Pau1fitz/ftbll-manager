@@ -46,7 +46,7 @@ const players = [
 	{
 		name: 'Steve O Connell',
 		gamesPlayed: 14,
-		goalsScored: 5,
+		goalsScored: 15,
 		yellowCards: 1,
 		redCards: 0,
 		photo: 'https://dummyimage.com/300'
@@ -62,7 +62,7 @@ const players = [
 	{
 		name: 'Paul Curtin',
 		gamesPlayed: 5,
-		goalsScored: 10,
+		goalsScored: 9,
 		yellowCards: 1,
 		redCards: 0,
 		photo: 'https://dummyimage.com/300'
@@ -70,7 +70,7 @@ const players = [
 	{
 		name: 'Gavin Falconer',
 		gamesPlayed: 5,
-		goalsScored: 10,
+		goalsScored: 12,
 		yellowCards: 1,
 		redCards: 2,
 		photo: 'https://dummyimage.com/300'
@@ -78,14 +78,14 @@ const players = [
 	{
 		name: 'Enda Schifo',
 		gamesPlayed: 5,
-		goalsScored: 10,
+		goalsScored: 1,
 		yellowCards: 1,
 		redCards: 1,
 		photo: 'https://dummyimage.com/300'
 	},
 ];
 
-export default class Players extends Component {
+export default class TopScorers extends Component {
   render() {
     return (
       <ScrollView>
@@ -93,22 +93,16 @@ export default class Players extends Component {
 						<PlayerNameHeaderText>Name</PlayerNameHeaderText>
 						<HeaderText>GP</HeaderText>
 						<HeaderText>GLS</HeaderText>
-						<YellowCardHeaderContainer>
-							<YellowCardHeader />
-						</YellowCardHeaderContainer>
-						<RedCardHeaderContainer>
-							<RedCardHeader />
-						</RedCardHeaderContainer>
 					</PlayerListHeader>
-					{players.map(player => {
+					{players.sort((a, b) => {
+						return b.goalsScored - a.goalsScored;
+					}).map(player => {
 						return (
 							<PlayerContainer key={player.name}>
 								<PlayerImage source={{uri: player.photo}} />
 								<PlayerName>{player.name}</PlayerName>
 								<PlayerText>{player.gamesPlayed}</PlayerText>
 								<PlayerText>{player.goalsScored}</PlayerText>
-								<PlayerText>{player.yellowCards}</PlayerText>
-								<PlayerText>{player.redCards}</PlayerText>
 							</PlayerContainer>
 						);
 					})}
@@ -135,30 +129,6 @@ const HeaderText = styled.Text`
 const PlayerNameHeaderText = styled.Text`
 	margin-left: 60px;
 	flex: 3;
-`;
-
-const YellowCardHeaderContainer = styled.View`
-	flex: 1;
-	display: flex;
-	align-items: center;
-`;
-
-const YellowCardHeader = styled.View`
-	height: 15px;
-	width: 10px;
-	background-color: #F5D600;
-`;
-
-const RedCardHeaderContainer = styled.View`
-	flex: 1;
-	display: flex;
-	align-items: center;
-`;
-
-const RedCardHeader = styled.View`
-	height: 15px;
-	width: 10px;
-	background-color: #FD404A;
 `;
 
 const PlayerContainer = styled.View`

@@ -54,7 +54,7 @@ const results = [
 	}
 ]
 
-export default class App extends Component<{}> {
+export default class Results extends Component {
   render() {
     return (
 			<ResultsView>
