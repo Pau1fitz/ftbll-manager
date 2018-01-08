@@ -6,12 +6,13 @@ import { StackNavigator } from 'react-navigation';
 import Players from './components/Players';
 import TopScorers from './components/TopScorers';
 import Results from './components/Results';
+import Fixtures from './components/Fixtures';
 
 const RootNavigator = StackNavigator({
-	TopScorers: {
-		screen: TopScorers,
+	Fixtures: {
+		screen: Fixtures,
 		navigationOptions: {
-			headerTitle: 'Top Scorers',
+			headerTitle: 'Fixtures',
 			headerTintColor: '#fff',
 			headerStyle: { backgroundColor: '#000'},
 		},
