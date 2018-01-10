@@ -43,27 +43,27 @@ const results = [
 export default class Fixtures extends Component {
   render() {
     return (
-			<ResultsView>
-				<TopRow>
-					<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
-					<Text>UCC Diaspora</Text>
-				</TopRow>
-	      <ScrollView>
-					{
-						results.map(result => {
-							return(
-								<ResultsContainer key={result.date}>
-									<ResultContainer>
-										<OpponentText>{ result.opponent }</OpponentText>
-										<ResultText>{ result.homeAway }</ResultText>
-										<DateText>{ result.date }</DateText>
-									</ResultContainer>
-								</ResultsContainer>
-							);
-						})
-					}
-	      </ScrollView>
-			</ResultsView>
+	<ResultsView>
+		<TopRow>
+			<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
+			<Text>UCC Diaspora</Text>
+		</TopRow>
+		<ScrollView>
+			{
+				results.map(result => {
+					return(
+						<ResultsContainer key={result.date}>
+							<ResultContainer>
+								<OpponentText>{ result.opponent }</OpponentText>
+								<ResultText>{ result.homeAway }</ResultText>
+								<DateText>{ result.date }</DateText>
+							</ResultContainer>
+						</ResultsContainer>
+					);
+				})
+			}
+		</ScrollView>
+	</ResultsView>
     );
   }
 }
