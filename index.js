@@ -1,3 +1,4 @@
+import React from 'react';
 import { AppRegistry } from 'react-native';
 import App from './App';
 import { ApolloClient } from 'apollo-client';
@@ -10,10 +11,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-const App = () => (
+const FootballApp = () => (
   <ApolloProvider client={client}>
-    <MyRootComponent />
+    <App />
   </ApolloProvider>
 );
 
-AppRegistry.registerComponent('ftbllmgr', () => App);
+AppRegistry.registerComponent('ftbllmgr', () => FootballApp);

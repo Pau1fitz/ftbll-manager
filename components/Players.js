@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
-
 const players = [
 	{
 		name: 'Luke Wilson',
@@ -90,6 +89,9 @@ const players = [
 
 class Players extends Component {
   render() {
+
+		const { allPlayers } = this.props.data;
+
     return (
       <ScrollView>
 					<PlayerListHeader>
@@ -195,6 +197,11 @@ export default graphql(gql`
     allPlayers {
       id
       name
+			gamesPlayed
+			goalsScored
+			yellowCards
+			redCards
+			photo
       team {
         name
       }
