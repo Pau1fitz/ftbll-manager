@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import styled from 'styled-components/native';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+
 
 const players = [
 	{
@@ -85,7 +88,7 @@ const players = [
 	},
 ];
 
-export default class Players extends Component {
+class Players extends Component {
   render() {
     return (
       <ScrollView>
@@ -186,3 +189,15 @@ const PlayerText = styled.Text`
 	flex: 1;
 	text-align: center;
 `;
+
+export default graphql(gql`
+  query {
+    allPlayers {
+      id
+      name
+      team {
+        name
+      }
+    }
+  }
+`)(Players);
