@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 
 const players = [
 	{
@@ -88,8 +88,9 @@ const players = [
 ];
 
 class Players extends Component {
-  render() {
 
+  render() {
+		
 		const { allPlayers } = this.props.data;
 
     return (
@@ -192,9 +193,9 @@ const PlayerText = styled.Text`
 	text-align: center;
 `;
 
-export default graphql(gql`
+const getAllPlayers = gql`
   query {
-    allPlayers {
+		allPlayers {
       id
       name
 			gamesPlayed
@@ -207,4 +208,18 @@ export default graphql(gql`
       }
     }
   }
-`)(Players);
+`;
+
+
+const createPlayer = gql`
+  mutation createPlayer($name: String!) {
+    createPlayer(name: $name) {
+      name
+    }
+  }
+`
+
+export default compose(
+    graphql(getAllPlayers),
+    graphql(createPlayer, { name: 'createPlayer' }),
+)(Players);
