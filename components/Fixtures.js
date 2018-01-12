@@ -12,7 +12,7 @@ class Fixtures extends Component {
 
     return (
       <FixturesView>
-				<TopRow>
+        <TopRow>
           <TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
           <Text>UCC Diaspora</Text>
         </TopRow>
@@ -99,7 +99,6 @@ const getAllFixtures = gql`
     }
   }
 `;
-
 
 export default compose(
   graphql(getAllFixtures)
