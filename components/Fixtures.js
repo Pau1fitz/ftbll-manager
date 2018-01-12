@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import styled from 'styled-components/native';
 
-const results = [
+const fixtures = [
 	{
 		opponent: 'Wilton Utd',
 		homeAway: 'H',
@@ -43,33 +43,33 @@ const results = [
 export default class Fixtures extends Component {
   render() {
     return (
-	<ResultsView>
+	<FixturesView>
 		<TopRow>
 			<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
 			<Text>UCC Diaspora</Text>
 		</TopRow>
 		<ScrollView>
 			{
-				results.map(result => {
+				fixtures.map(fixture => {
 					return(
-						<ResultsContainer key={result.date}>
-							<ResultContainer>
-								<OpponentText>{ result.opponent }</OpponentText>
-								<ResultText>{ result.homeAway }</ResultText>
-								<DateText>{ result.date }</DateText>
-							</ResultContainer>
-						</ResultsContainer>
+						<FixturesContainer key={fixture.date}>
+							<FixtureContainer>
+								<OpponentText>{ fixture.opponent }</OpponentText>
+								<FixtureText>{ fixture.homeAway }</FixtureText>
+								<DateText>{ fixture.date }</DateText>
+							</FixtureContainer>
+						</FixturesContainer>
 					);
 				})
 			}
 		</ScrollView>
-	</ResultsView>
+	</FixturesView>
     );
   }
 }
 
 
-const ResultsView = styled.View`
+const FixturesView = styled.View`
 	flex: 1;
 `;
 
@@ -89,15 +89,14 @@ const TeamLogo = styled.Image`
 	border-radius: 25px;
 `;
 
-const ResultsContainer = styled.ScrollView`
+const FixturesContainer = styled.ScrollView`
 	flex-grow: 1
 `;
 
-const ResultsHeader = styled.View`
-
+const FixturesHeader = styled.View`
 `;
 
-const ResultContainer = styled.View`
+const FixtureContainer = styled.View`
 	display: flex;
 	flex-direction: row;
 	border-bottom-color: rgb(241, 241, 241);
@@ -117,7 +116,7 @@ const DateText = styled.Text`
 	text-align: right;
 `;
 
-const ResultText = styled.Text`
+const FixtureText = styled.Text`
 	flex: 1;
 	text-align: center;
 `;

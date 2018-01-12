@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 
-
 class Players extends Component {
 
   render() {
