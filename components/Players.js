@@ -168,7 +168,6 @@ const addPlayerToTeam = gql`
     }
   }
 `
-
 export default compose(
     graphql(getAllPlayers),
     graphql(createPlayer, { name: 'createPlayer' }),
