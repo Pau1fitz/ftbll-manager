@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components/native';
 import { View, ActivityIndicator } from 'react-native';
+import styled from 'styled-components/native';
 
 const Loading = () => {
 	return(

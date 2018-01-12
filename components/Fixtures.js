@@ -13,7 +13,7 @@ const fixtures = [
 		homeAway: 'H',
 		date: '10 Sept 2017'
 	}
-]
+];
 
 class Fixtures extends Component {
   render() {
