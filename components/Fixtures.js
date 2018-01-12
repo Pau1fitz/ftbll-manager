@@ -40,7 +40,7 @@ const fixtures = [
 	}
 ]
 
-export default class Fixtures extends Component {
+class Fixtures extends Component {
   render() {
     return (
 	<FixturesView>
@@ -67,7 +67,6 @@ export default class Fixtures extends Component {
     );
   }
 }
-
 
 const FixturesView = styled.View`
 	flex: 1;
@@ -120,3 +119,16 @@ const FixtureText = styled.Text`
 	flex: 1;
 	text-align: center;
 `;
+
+const getAllFixtures = gql`
+  query {
+		allFixtures {
+      id
+    }
+  }
+`;
+
+
+export default compose(
+	graphql(getAllFixtures)
+)(Fixtures);
