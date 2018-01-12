@@ -1,44 +1,37 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import styled from 'styled-components/native';
+import gql from 'graphql-tag';
+import { graphql, compose } from 'react-apollo';
 
-const fixtures = [
-	{
-		opponent: 'Wilton Utd',
-		homeAway: 'H',
-		date: '01 Sept 2017'
-	},
-	{
-		opponent: 'Greenwood',
-		homeAway: 'H',
-		date: '10 Sept 2017'
-	}
-];
 
 class Fixtures extends Component {
   render() {
+
+		const fixtures = this.props.data.allFixtures || [];
+
     return (
-	<FixturesView>
-		<TopRow>
-			<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
-			<Text>UCC Diaspora</Text>
-		</TopRow>
-		<ScrollView>
-			{
-				fixtures.map(fixture => {
-					return(
-						<FixturesContainer key={fixture.date}>
-							<FixtureContainer>
-								<OpponentText>{ fixture.opponent }</OpponentText>
-								<FixtureText>{ fixture.homeAway }</FixtureText>
-								<DateText>{ fixture.date }</DateText>
-							</FixtureContainer>
-						</FixturesContainer>
-					);
-				})
-			}
-		</ScrollView>
-	</FixturesView>
+			<FixturesView>
+				<TopRow>
+					<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
+					<Text>UCC Diaspora</Text>
+				</TopRow>
+				<ScrollView>
+					{
+						fixtures.map(fixture => {
+							return(
+								<FixturesContainer key={fixture.date}>
+									<FixtureContainer>
+										<OpponentText>{ fixture.opponent }</OpponentText>
+										<FixtureText>{ fixture.homeAway }</FixtureText>
+										<DateText>{ fixture.date }</DateText>
+									</FixtureContainer>
+								</FixturesContainer>
+							);
+						})
+					}
+				</ScrollView>
+			</FixturesView>
     );
   }
 }
@@ -98,7 +91,10 @@ const FixtureText = styled.Text`
 const getAllFixtures = gql`
   query {
 		allFixtures {
-      id
+			id
+	    opponent
+	    date
+	    homeAway
     }
   }
 `;

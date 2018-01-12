@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import styled from 'styled-components/native';
+import gql from 'graphql-tag';
+import { graphql, compose } from 'react-apollo';
 
 const results = [
 	{
