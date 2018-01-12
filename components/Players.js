@@ -230,7 +230,30 @@ const createPlayer = gql`
   }
 `
 
+const addPlayerToTeam = gql`
+  mutation createPlayer($playerId: ID!) {
+    addToTeamPlayers(
+      teamTeamId: "cjcc18qt0a2a30178st78g4yg"
+      playersPlayerId: $playerId
+    ) {
+      teamTeam {
+        name
+      }
+      playersPlayer {
+        id
+        name
+        gamesPlayed
+        goalsScored
+        yellowCards
+        redCards
+        photo
+      }
+    }
+  }
+`
+
 export default compose(
     graphql(getAllPlayers),
     graphql(createPlayer, { name: 'createPlayer' }),
+    graphql(addPlayerToTeam, { name: 'addPlayerToTeam' }),	
 )(Players);
