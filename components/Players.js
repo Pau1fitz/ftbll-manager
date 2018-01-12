@@ -90,7 +90,7 @@ const players = [
 class Players extends Component {
 
   render() {
-		
+
 		const { allPlayers } = this.props.data;
 
     return (
@@ -210,11 +210,22 @@ const getAllPlayers = gql`
   }
 `;
 
-
 const createPlayer = gql`
   mutation createPlayer($name: String!) {
-    createPlayer(name: $name) {
+    createPlayer(
+      name: $name,
+      gamesPlayed: 1,
+      goalsScored: 3,
+      yellowCards: 1,
+      redCards: 1,
+      photo: "https://dummyimage.com/300"
+    ) {
       name
+      gamesPlayed
+      goalsScored
+      yellowCards
+      redCards
+      photo
     }
   }
 `
