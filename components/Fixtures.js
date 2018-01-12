@@ -12,31 +12,6 @@ const fixtures = [
 		opponent: 'Greenwood',
 		homeAway: 'H',
 		date: '10 Sept 2017'
-	},
-	{
-		opponent: 'Everton',
-		homeAway: 'H',
-		date: '01 Oct 2017'
-	},
-	{
-		opponent: 'Leeds',
-		homeAway: 'H',
-		date: '11 Oct 2017'
-	},
-	{
-		opponent: 'Avondale',
-		homeAway: 'A',
-		date: '10 Nov 2017'
-	},
-	{
-		opponent: 'College Corinthians',
-		homeAway: 'A',
-		date: '17 Nov 2017'
-	},
-	{
-		opponent: 'UCD',
-		homeAway: 'A',
-		date: '26 Nov 2017'
 	}
 ]
 
