@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 
-
 class Fixtures extends Component {
   render() {
 
@@ -16,7 +15,6 @@ class Fixtures extends Component {
           <TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
           <Text>UCC Diaspora</Text>
         </TopRow>
-
         <ScrollView>
         {
           fixtures.map(fixture => {
