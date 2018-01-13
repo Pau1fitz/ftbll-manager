@@ -135,3 +135,4 @@ const ResultText = styled.Text`
 	flex: 1;
 	text-align: center;
 `;
+
