@@ -27,7 +27,7 @@ class Fixtures extends Component {
                 </FixtureContainer>
               </FixturesContainer>
             );
-          });
+          })
         }
         </ScrollView>
       </FixturesView>
