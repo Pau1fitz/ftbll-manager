@@ -135,7 +135,8 @@ const createPlayer = gql`
       goalsScored: 3,
       yellowCards: 1,
       redCards: 1,
-      photo: "https://dummyimage.com/300"
+      photo: "https://dummyimage.com/300",
+      teamId: "cjcgrtdpu0j2p0149dme17k7a"
     ) {
     name
     gamesPlayed
