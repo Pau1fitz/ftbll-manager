@@ -17,9 +17,9 @@ class Fixtures extends Component {
         </TopRow>
         <ScrollView>
         {
-          fixtures.map(fixture => {
+          fixtures.map((fixture, i) => {
             return(
-              <FixturesContainer key={fixture.date}>
+              <FixturesContainer key={i}>
                 <FixtureContainer>
 	               <OpponentText>{ fixture.opponent }</OpponentText>
 	               <FixtureText>{ fixture.homeAway }</FixtureText>
