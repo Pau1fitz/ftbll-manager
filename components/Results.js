@@ -11,53 +11,14 @@ const results = [
 		wLD: 'W',
 		homeAway: 'H',
 		date: '01 Sept 2016'
-	},
-	{
-		opponent: 'Greenwood',
-		score: '1-1',
-		wLD: 'D',
-		homeAway: 'H',
-		date: '10 Sept 2016'
-	},
-	{
-		opponent: 'Everton',
-		score: '0-2',
-		wLD: 'L',
-		homeAway: 'H',
-		date: '01 Oct 2016'
-	},
-	{
-		opponent: 'Leeds',
-		score: '1-0',
-		wLD: 'W',
-		homeAway: 'H',
-		date: '11 Oct 2016'
-	},
-	{
-		opponent: 'Avondale',
-		score: '1-1',
-		wLD: 'D',
-		homeAway: 'A',
-		date: '10 Nov 2016'
-	},
-	{
-		opponent: 'College Corinthians',
-		score: '1-1',
-		wLD: 'D',
-		homeAway: 'A',
-		date: '17 Nov 2016'
-	},
-	{
-		opponent: 'UCD',
-		score: '2-1',
-		wLD: 'W',
-		homeAway: 'A',
-		date: '26 Nov 2016'
 	}
-]
+];
 
-export default class Results extends Component {
+class Results extends Component {
   render() {
+
+    const results = this.props.data.allResults || [];
+
     return (
 			<ResultsView>
 				<TopRow>
@@ -136,3 +97,19 @@ const ResultText = styled.Text`
 	text-align: center;
 `;
 
+const getAllResults = gql`
+  query {
+    allResults {
+      id
+      opponent
+      date
+      homeAway
+      score
+      wLD
+    }
+  }
+`;
+
+export default compose(
+  graphql(getAllResults)
+)(Results);
