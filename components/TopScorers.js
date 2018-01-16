@@ -85,8 +85,11 @@ const players = [
 	},
 ];
 
-export default class TopScorers extends Component {
+class TopScorers extends Component {
   render() {
+
+    const allPlayers = this.props.data.allPlayers || [];
+
     return (
       <ScrollView>
 					<PlayerListHeader>
@@ -94,7 +97,7 @@ export default class TopScorers extends Component {
 						<HeaderText>GP</HeaderText>
 						<HeaderText>GLS</HeaderText>
 					</PlayerListHeader>
-					{players.sort((a, b) => {
+					{allPlayers.sort((a, b) => {
 						return b.goalsScored - a.goalsScored;
 					}).map(player => {
 						return (
@@ -156,3 +159,24 @@ const PlayerText = styled.Text`
 	flex: 1;
 	text-align: center;
 `;
+
+const getAllPlayers = gql`
+  query {
+    allPlayers {
+      id
+      name
+      gamesPlayed
+      goalsScored
+      yellowCards
+      redCards
+      photo
+      team {
+        name
+      }
+    }
+  }
+`;
+
+export default compose(
+  graphql(getAllPlayers),
+)(TopScorers);
