@@ -8,10 +8,10 @@ import Results from './components/Results';
 import Fixtures from './components/Fixtures';
 
 const RootNavigator = StackNavigator({
-	Results: {
-		screen: Results,
+	TopScorers: {
+		screen: TopScorers,
 		navigationOptions: {
-			headerTitle: 'Results',
+			headerTitle: 'Top Scorers',
 			headerTintColor: '#fff',
 			headerStyle: { backgroundColor: '#000'},
 		},

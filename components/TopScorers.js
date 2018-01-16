@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import styled from 'styled-components/native';
+import gql from 'graphql-tag';
+import { graphql, compose } from 'react-apollo';
 
 const players = [
 	{
@@ -89,7 +91,6 @@ class TopScorers extends Component {
   render() {
 
     const allPlayers = this.props.data.allPlayers || [];
-
     return (
       <ScrollView>
 					<PlayerListHeader>
@@ -97,9 +98,7 @@ class TopScorers extends Component {
 						<HeaderText>GP</HeaderText>
 						<HeaderText>GLS</HeaderText>
 					</PlayerListHeader>
-					{allPlayers.sort((a, b) => {
-						return b.goalsScored - a.goalsScored;
-					}).map(player => {
+					{allPlayers.map(player => {
 						return (
 							<PlayerContainer key={player.name}>
 								<PlayerImage source={{uri: player.photo}} />
@@ -162,7 +161,9 @@ const PlayerText = styled.Text`
 
 const getAllPlayers = gql`
   query {
-    allPlayers {
+    allPlayers (
+      orderBy: goalsScored_DESC
+    ) {
       id
       name
       gamesPlayed
