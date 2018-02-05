@@ -11,37 +11,33 @@ import {
 	Button
 } from 'react-native';
 
-class HomeScreen extends Component {
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View>
+      <NavView>
 
-  render() {
+        <TouchableHighlight
+          onPress={() => navigation.navigate('TopScorers')}>
+          <MenuText>Top Scorers</MenuText>
+        </TouchableHighlight>
 
-    return (
-			<View>
-				<NavView>
+        <TouchableHighlight
+          onPress={() => navigation.navigate('Fixtures')}>
+          <MenuText>Fixtures</MenuText>
+        </TouchableHighlight>
 
-					<TouchableHighlight
-						onPress={() => this.props.navigation.navigate('TopScorers')}>
-						<MenuText>Top Scorers</MenuText>
-					</TouchableHighlight>
+        <TouchableHighlight onPress={() => navigation.navigate('Players')}>
+          <MenuText>Players</MenuText>
+        </TouchableHighlight>
 
-					<TouchableHighlight
-						onPress={() => this.props.navigation.navigate('Fixtures')}>
-						<MenuText>Fixtures</MenuText>
-					</TouchableHighlight>
+        <TouchableHighlight onPress={() => navigation.navigate('Results')}>
+          <MenuText>Results</MenuText>
+        </TouchableHighlight>
 
-					<TouchableHighlight onPress={() => this.props.navigation.navigate('Players')}>
-						<MenuText>Players</MenuText>
-					</TouchableHighlight>
-
-					<TouchableHighlight onPress={() => this.props.navigation.navigate('Results')}>
-						<MenuText>Results</MenuText>
-					</TouchableHighlight>
-
-				</NavView>
-      </View>
-    );
-  }
-}
+      </NavView>
+    </View>
+  );
+};
 
 const NavView = styled.View`
 	flex-direction: row;
