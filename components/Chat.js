@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import styled from 'styled-components/native';
+import gql from 'graphql-tag';
+import { graphql, compose } from 'react-apollo';
 
 class Chat extends Component {
 
@@ -9,7 +11,8 @@ class Chat extends Component {
 		message: '',
 		messages: [],
 		userId: null
-	}
+  }
+
 
 	updateText = (e) => {
 		this.setState({
@@ -32,13 +35,29 @@ class Chat extends Component {
 
   render() {
 
+    let allMessages = this.props.data.allMessages || [];
+
+    allMessages = allMessages.map(msg => {
+      return {
+        _id: msg.id,
+        text: msg.message,
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://facebook.github.io/react/img/logo_og.png',
+        }
+      }
+    });
 
     return (
       <MainContainer>
-				<GiftedChat
-				 messages={this.state.messages}
-				 renderBubble={this.renderBubble}
-				 onInputTextChanged={this.updateText}
+        <GiftedChat
+				  messages={ allMessages }
+				  renderBubble={this.renderBubble}
+				  onInputTextChanged={this.updateText}
+				  onSend={this.sendMessage}
+          user={{ _id: 12345 }}
 				/>
 			</MainContainer>
     );
@@ -50,4 +69,15 @@ const MainContainer = styled.View`
 	flex: 1;
 `
 
-export default Chat;
+const getAllMessages = gql`
+  query {
+    allMessages {
+      id
+      message
+    }
+  }
+`;
+
+export default compose(
+  graphql(getAllMessages)
+)(Chat);
