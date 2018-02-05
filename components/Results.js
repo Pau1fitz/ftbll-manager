@@ -14,7 +14,7 @@ const results = [
 	}
 ];
 
-const Results = ({data}) => {
+const Results = ({ data }) => {
 	const results = data.allResults || [];
 	return (
 		<ResultsView>
@@ -40,8 +40,8 @@ const Results = ({data}) => {
 				}
 			</ScrollView>
 		</ResultsView>
-	)
-}
+	);
+};
 
 const ResultsView = styled.View`
 	flex: 1;

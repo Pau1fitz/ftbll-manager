@@ -4,36 +4,34 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 
-class Fixtures extends Component {
-  render() {
+const Fixtures = ({ data }) => {
 
-    const fixtures = this.props.data.allFixtures || [];
+  const fixtures = data.allFixtures || [];
 
-    return (
-      <FixturesView>
-        <TopRow>
-          <TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
-          <Text>UCC Diaspora</Text>
-        </TopRow>
-        <ScrollView>
-        {
-          fixtures.map((fixture, i) => {
-            return(
-              <FixturesContainer key={i}>
-                <FixtureContainer>
-	               <OpponentText>{ fixture.opponent }</OpponentText>
-	               <FixtureText>{ fixture.homeAway }</FixtureText>
-	               <DateText>{ fixture.date }</DateText>
-                </FixtureContainer>
-              </FixturesContainer>
-            );
-          })
-        }
-        </ScrollView>
-      </FixturesView>
-    );
-  }
-}
+  return (
+    <FixturesView>
+      <TopRow>
+        <TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
+        <Text>UCC Diaspora</Text>
+      </TopRow>
+      <ScrollView>
+      {
+        fixtures.map((fixture, i) => {
+          return(
+            <FixturesContainer key={i}>
+              <FixtureContainer>
+              <OpponentText>{ fixture.opponent }</OpponentText>
+              <FixtureText>{ fixture.homeAway }</FixtureText>
+              <DateText>{ fixture.date }</DateText>
+              </FixtureContainer>
+            </FixturesContainer>
+          );
+        })
+      }
+      </ScrollView>
+    </FixturesView>
+  );
+};
 
 const FixturesView = styled.View`
   flex: 1;

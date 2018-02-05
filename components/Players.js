@@ -4,41 +4,38 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 
-class Players extends Component {
+const Players = ({ data }) => {
 
-  render() {
+  const allPlayers = data.allPlayers || [];
 
-    const allPlayers = this.props.data.allPlayers || [];
-
-    return (
-      <ScrollView>
-        <PlayerListHeader>
-        <PlayerNameHeaderText>Name</PlayerNameHeaderText>
-        <HeaderText>GP</HeaderText>
-        <HeaderText>GLS</HeaderText>
-        <YellowCardHeaderContainer>
-          <YellowCardHeader />
-        </YellowCardHeaderContainer>
-        <RedCardHeaderContainer>
-          <RedCardHeader />
-        </RedCardHeaderContainer>
-        </PlayerListHeader>
-        {allPlayers.map(player => {
-          return (
-            <PlayerContainer key={player.id}>
-              <PlayerImage source={{uri: player.photo}} />
-              <PlayerName>{player.name}</PlayerName>
-              <PlayerText>{player.gamesPlayed}</PlayerText>
-              <PlayerText>{player.goalsScored}</PlayerText>
-              <PlayerText>{player.yellowCards}</PlayerText>
-              <PlayerText>{player.redCards}</PlayerText>
-            </PlayerContainer>
-          );
-        })}
-      </ScrollView>
-    );
-  }
-}
+  return (
+    <ScrollView>
+      <PlayerListHeader>
+      <PlayerNameHeaderText>Name</PlayerNameHeaderText>
+      <HeaderText>GP</HeaderText>
+      <HeaderText>GLS</HeaderText>
+      <YellowCardHeaderContainer>
+        <YellowCardHeader />
+      </YellowCardHeaderContainer>
+      <RedCardHeaderContainer>
+        <RedCardHeader />
+      </RedCardHeaderContainer>
+      </PlayerListHeader>
+      {allPlayers.map(player => {
+        return (
+          <PlayerContainer key={player.id}>
+            <PlayerImage source={{uri: player.photo}} />
+            <PlayerName>{player.name}</PlayerName>
+            <PlayerText>{player.gamesPlayed}</PlayerText>
+            <PlayerText>{player.goalsScored}</PlayerText>
+            <PlayerText>{player.yellowCards}</PlayerText>
+            <PlayerText>{player.redCards}</PlayerText>
+          </PlayerContainer>
+        );
+      })}
+    </ScrollView>
+  );
+};
 
 const PlayerListHeader = styled.View`
   display: flex;
