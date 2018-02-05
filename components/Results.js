@@ -14,39 +14,34 @@ const results = [
 	}
 ];
 
-class Results extends Component {
-  render() {
-
-    const results = this.props.data.allResults || [];
-
-    return (
-			<ResultsView>
-				<TopRow>
-					<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
-					<Text>UCC Diaspora</Text>
-				</TopRow>
-	      <ScrollView>
-					{
-						results.map(result => {
-							return(
-								<ResultsContainer key={result.date}>
-									<ResultContainer>
-										<OpponentText>{ result.opponent }</OpponentText>
-										<ResultText>{ result.score }</ResultText>
-										<ResultText>{ result.wLD }</ResultText>
-										<ResultText>{ result.homeAway }</ResultText>
-										<DateText>{ result.date }</DateText>
-									</ResultContainer>
-								</ResultsContainer>
-							);
-						})
-					}
-	      </ScrollView>
-			</ResultsView>
-    );
-  }
+const Results = ({data}) => {
+	const results = data.allResults || [];
+	return (
+		<ResultsView>
+			<TopRow>
+				<TeamLogo source={{uri: 'https://s8.postimg.org/9ktyx779h/UCC_Crest_Transparent.png'}}/>
+				<Text>UCC Diaspora</Text>
+			</TopRow>
+			<ScrollView>
+				{
+					results.map(result => {
+						return(
+							<ResultsContainer key={result.date}>
+								<ResultContainer>
+									<OpponentText>{ result.opponent }</OpponentText>
+									<ResultText>{ result.score }</ResultText>
+									<ResultText>{ result.wLD }</ResultText>
+									<ResultText>{ result.homeAway }</ResultText>
+									<DateText>{ result.date }</DateText>
+								</ResultContainer>
+							</ResultsContainer>
+						);
+					})
+				}
+			</ScrollView>
+		</ResultsView>
+	)
 }
-
 
 const ResultsView = styled.View`
 	flex: 1;
