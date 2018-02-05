@@ -26,13 +26,13 @@ const TopScorers = ({ data }) => {
 				<HeaderText>GP</HeaderText>
 				<HeaderText>GLS</HeaderText>
 			</PlayerListHeader>
-			{allPlayers.map(player => {
+			{ allPlayers.map(player => {
 				return (
-					<PlayerContainer key={player.name}>
-						<PlayerImage source={{uri: player.photo}} />
-						<PlayerName>{player.name}</PlayerName>
-						<PlayerText>{player.gamesPlayed}</PlayerText>
-						<PlayerText>{player.goalsScored}</PlayerText>
+					<PlayerContainer key={ player.name }>
+						<PlayerImage source={{ uri: player.photo} } />
+						<PlayerName>{ player.name }</PlayerName>
+						<PlayerText>{ player.gamesPlayed }</PlayerText>
+						<PlayerText>{ player.goalsScored }</PlayerText>
 					</PlayerContainer>
 				);
 			})}
