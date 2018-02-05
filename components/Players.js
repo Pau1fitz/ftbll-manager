@@ -3,12 +3,17 @@ import { ScrollView, View, Text, Image } from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
+import Loading from './Loading';
 
 const Players = ({ data }) => {
 
   const allPlayers = data.allPlayers || [];
 
-  return (
+  return allPlayers.length === 0 ? 
+    (
+      <Loading />
+    ) : 
+  (
     <ScrollView>
       <PlayerListHeader>
       <PlayerNameHeaderText>Name</PlayerNameHeaderText>

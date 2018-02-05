@@ -7,6 +7,7 @@ import TopScorers from './components/TopScorers';
 import Results from './components/Results';
 import Fixtures from './components/Fixtures';
 import HomeScreen from './components/HomeScreen';
+import Chat from './components/Chat';
 
 const RootNavigator = StackNavigator({
 
@@ -15,7 +16,7 @@ const RootNavigator = StackNavigator({
 		navigationOptions: {
 		headerTitle: 'Home',
 				headerTintColor: '#fff',
-				headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+				headerStyle: { backgroundColor: '#000'},
 		},
 	},
 	TopScorers: {
@@ -31,7 +32,7 @@ const RootNavigator = StackNavigator({
 		navigationOptions: {
 		headerTitle: 'Results',
 				headerTintColor: '#fff',
-				headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+				headerStyle: { backgroundColor: '#000'},
 		},
   },
   Players: {
@@ -39,7 +40,7 @@ const RootNavigator = StackNavigator({
 		navigationOptions: {
 		headerTitle: 'Players',
 				headerTintColor: '#fff',
-				headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+				headerStyle: { backgroundColor: '#000'},
 		},
   },
   Fixtures: {
@@ -47,7 +48,15 @@ const RootNavigator = StackNavigator({
 		navigationOptions: {
 		headerTitle: 'Fixtures',
 				headerTintColor: '#fff',
-				headerStyle: { backgroundColor: 'rgb(60, 0, 60)'},
+				headerStyle: { backgroundColor: '#000'},
+		},
+	},
+	Chat: {
+		screen: Chat,
+		navigationOptions: {
+		headerTitle: 'Chat',
+				headerTintColor: '#fff',
+				headerStyle: { backgroundColor: '#000'},
 		},
 	}
 });

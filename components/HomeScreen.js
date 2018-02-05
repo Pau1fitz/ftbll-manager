@@ -34,13 +34,16 @@ const HomeScreen = ({ navigation }) => {
           <MenuText>Results</MenuText>
         </TouchableHighlight>
 
+				<TouchableHighlight onPress={() => navigation.navigate('Chat')}>
+          <MenuText>Chat</MenuText>
+        </TouchableHighlight>
+
       </NavView>
     </View>
   );
 };
 
 const NavView = styled.View`
-	flex-direction: row;
 	margin-bottom: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
