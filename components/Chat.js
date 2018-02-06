@@ -18,7 +18,15 @@ class Chat extends Component {
 		this.setState({
 			message: e
 		});
-	}
+  }
+  
+  sendMessage = (e) => {
+    this.props.addMessageToTeam({
+      variables: {
+        message: e[0].text,
+      }
+    });
+  }
 
 	renderBubble (props) {
 		return (
@@ -78,6 +86,19 @@ const getAllMessages = gql`
   }
 `;
 
+const addMessageToTeam = gql`
+  mutation CreateMessage($message: String!) {
+    createMessage(
+    message: $message,
+    teamId: "cjcgrv6a8g09u0128v1crk9r0"
+  ) {
+      id
+      message
+    }
+  }
+`;
+
 export default compose(
-  graphql(getAllMessages)
+  graphql(getAllMessages),
+  graphql(addMessageToTeam, { name: 'addMessageToTeam' }),
 )(Chat);
