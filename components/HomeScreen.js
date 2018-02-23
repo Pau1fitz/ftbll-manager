@@ -45,7 +45,6 @@ class HomeScreen extends Component  {
 									photo: result.picture.data.url,
 									displayLogin: false,
 									userId: result.id,
-									birthday: result.birthday,
 									loading: false
 								})
 								resolve(result)
@@ -58,7 +57,7 @@ class HomeScreen extends Component  {
 									accessToken: accessToken,
 									parameters: {
 										fields: {
-											string: 'name,picture,birthday'
+											string: 'name,picture'
 										}
 									}
 								}, responseInfoCallback);
